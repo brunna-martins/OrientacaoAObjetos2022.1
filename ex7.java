@@ -44,26 +44,35 @@ public class ex7 {
 		if (N==O) {
 			JOptionPane.showMessageDialog(null,"É possível multiplicar essas matrizes!");
 			matrizM3 = new int[M][P];
-			for (int i = 0; i<M; i++) {
+			matrizM3 = resultMult(matrizM1,matrizM2,M,N,O,P);
+			JOptionPane.showMessageDialog(null, matrizM3);
+			/*for (int i = 0; i<M; i++) {
 				for (int j = 0; j<P; j++) {
-					matrizM3[i][j] = resultMult(matrizM1,matrizM2,i,j,N,O);
+					matrizM3[i][j] = resultMult(matrizM1,matrizM2,i,j,N,O,M,P);
 					JOptionPane.showMessageDialog(null, matrizM3[i][j]);
 				}
-			}
+			}*/
 			
 		} else {
 			JOptionPane.showMessageDialog(null,"Não é possível multiplicar essas matrizes!");
 		}
 	}
 	
-	public static int resultMult(int matriz1[][],int matriz2[][],int cont1,int cont2,int col1,int lin2) {
-		int result = 0;
+	public static int[][] resultMult(int matriz1[][],int matriz2[][],int lin1,int col1,int lin2,int col2) {
+		int matrizResult[][];
+		matrizResult = new int[col1][lin2];
 		for (int i = 0; i<col1; i++) {
 			for (int j = 0; j<lin2; j++) {
-				result = result + matriz1[cont1][i]*matriz2[j][cont2];
+				for (int a = 0; a<col1; a++) {
+					for (int b = 0; b<lin2; b++) {
+						matrizResult[i][j] = matriz1[i][a]*matriz2[b][j];
+					}
+				}
+				
 			}
 		}
-		return result;
+		
+		return new int[col1][lin2];
 	}
 
 }
