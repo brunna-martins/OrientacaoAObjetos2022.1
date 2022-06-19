@@ -25,6 +25,9 @@ histograma vertical seria:
 
  * 
  */
+
+// funcionando, meu povo!!
+
 public class ex8 {
 
 	public static void main(String[] args) {
@@ -33,9 +36,26 @@ public class ex8 {
 		System.out.print("Digite a quantidade de valores que você quer armazenar no vetor: ");
 		qtdeValores = sc.nextInt();
 		int valores[] = new int[qtdeValores];
+		int minimo;
+		int maximo;
+		System.out.print("Digite o limite inferior dos valores do seu vetor: ");
+		minimo = sc.nextInt();
+		do {
+			System.out.print("Digite o limite superior dos valores do seu vetor: ");
+			maximo = sc.nextInt();
+		} while (maximo<=minimo);
 		for (int i = 0; i<qtdeValores; i++) {
 			System.out.print("Digite o valor a ser armazenado na posição "+(i+1)+" do vetor: ");
 			valores[i] = sc.nextInt();
+			if (valores[i]>=minimo && valores[i]<=maximo) {
+				
+			} else {
+				System.out.print("O valor digitado foge dos limites do intervalo!\n");
+				while (valores[i]<minimo || valores[i]>maximo) {
+					System.out.print("Digite o valor a ser armazenado na posição "+(i+1)+" do vetor: ");
+					valores[i] = sc.nextInt();
+				}
+			}
 		}
 		
 		Arrays.sort(valores); // essa função da biblioteca java.util.Arrays ordena números e strings
@@ -49,11 +69,20 @@ public class ex8 {
 					contFrequencia = contFrequencia+1;
 				}
 			}
-			System.out.print(valores[i]+" ");
-			for (int k = 1; k<contFrequencia; k++) {
-				System.out.print("*");
+			if (i>0 && valores[i]!=valores[i-1]) {
+				System.out.print(valores[i]+" ");
+				for (int k = 1; k<contFrequencia; k++) {
+					System.out.print("*");
+				}
+				System.out.print("\n");
+			} else if (i==0) {
+				System.out.print(valores[i]+" ");
+				for (int k = 1; k<contFrequencia; k++) {
+					System.out.print("*");
+				}
+				System.out.print("\n");
 			}
-			System.out.print("\n");
+			
 		}
 		
 		/*for (int i = 0; i<qtdeValores; i++) {
